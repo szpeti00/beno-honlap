@@ -62,20 +62,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Hover and active link management
-    let lastActiveLink = null;
-    navLinks.forEach(link => {
-        link.addEventListener('mouseenter', () => {
-            if (lastActiveLink) lastActiveLink.classList.remove('active');
-        });
-        link.addEventListener('mouseleave', () => {
-            if (lastActiveLink) lastActiveLink.classList.add('active');
-        });
-        link.addEventListener('click', () => {
-            if (lastActiveLink) lastActiveLink.classList.remove('active');
-            link.classList.add('active');
-            lastActiveLink = link;
-        });
-    });
+    // let lastActiveLink = null;
+    // navLinks.forEach(link => {
+    //     link.addEventListener('mouseenter', () => {
+    //         if (lastActiveLink) lastActiveLink.classList.remove('active');
+    //     });
+    //     link.addEventListener('mouseleave', () => {
+    //         if (lastActiveLink) lastActiveLink.classList.add('active');
+    //     });
+    //     link.addEventListener('click', () => {
+    //         if (lastActiveLink) lastActiveLink.classList.remove('active');
+    //         link.classList.add('active');
+    //         lastActiveLink = link;
+    //     });
+    // });
 
     // Change background image
     const backgrounds = document.querySelectorAll('.bg-image');
