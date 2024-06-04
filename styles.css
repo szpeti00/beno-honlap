@@ -39,7 +39,7 @@ h2 {
 }
 
 .bg-full-width {
-    background-image: linear-gradient(to right, var(--background-color-light), var(--secondary-color));
+    /* background-image: linear-gradient(to right, var(--background-color-light), var(--secondary-color)); */
     width: 100vw;
     position: relative;
     left: 50%;
