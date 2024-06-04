@@ -71,8 +71,8 @@ h4 {
 
 .navbar {
     background-color: rgba(255, 255, 255, .7);
-    padding-left: 6rem;
-    padding-right: 6rem;
+    padding-left: 5.5rem;
+    padding-right: 5.5rem;
 }
 
 /* Base styles that apply to all sizes */
@@ -132,7 +132,7 @@ h4 {
     display: none;
 }
 
-.fi, .footer-lang-link {
+.footer-lang-link, .footer-lang-link .fi {
     margin-right: 8px;
 }
 
@@ -197,7 +197,7 @@ h4 {
         border-bottom: 1px solid var(--secondary-color); /* Adds a line between links */
     }
 
-    .nav-item.dropdown {
+    .nav-item.dropdown, .nav-item.bigger-screen-only {
         display: none;
     }
 
@@ -262,7 +262,12 @@ h4 {
 }
 
 .adjusted-vertical-position {
-    transform: translateY(-90%); 
+    transform: translateY(-40%); 
+}
+
+.home-link {
+    color: var(--primary-color);
+    text-decoration: none;
 }
 
 .img-fluid {
