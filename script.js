@@ -61,22 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Hover and active link management
-    // let lastActiveLink = null;
-    // navLinks.forEach(link => {
-    //     link.addEventListener('mouseenter', () => {
-    //         if (lastActiveLink) lastActiveLink.classList.remove('active');
-    //     });
-    //     link.addEventListener('mouseleave', () => {
-    //         if (lastActiveLink) lastActiveLink.classList.add('active');
-    //     });
-    //     link.addEventListener('click', () => {
-    //         if (lastActiveLink) lastActiveLink.classList.remove('active');
-    //         link.classList.add('active');
-    //         lastActiveLink = link;
-    //     });
-    // });
-
     // Change background image
     const backgrounds = document.querySelectorAll('.bg-image');
     let currentBackgroundIndex = 0;
@@ -98,6 +82,48 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             form.classList.add('was-validated');
         });
+    });
+
+    // Flip card
+    document.querySelectorAll('.flip-btn').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const cardInner = event.currentTarget.closest('.flip-card-inner');
+            if (cardInner.style.transform === "rotateY(180deg)") {
+                cardInner.style.transform = "rotateY(0deg)";
+                cardInner.querySelector('.flip-card-front').style.visibility = "visible";
+                cardInner.querySelector('.flip-card-back').style.visibility = "hidden";
+            } else {
+                cardInner.style.transform = "rotateY(180deg)";
+                cardInner.querySelector('.flip-card-front').style.visibility = "hidden";
+                cardInner.querySelector('.flip-card-back').style.visibility = "visible";
+            }
+        });
+    });
+
+    // Function to reset all cards
+    const resetFlippedCards = () => {
+        let anyFlipped = false;
+        document.querySelectorAll('.flip-card-inner').forEach(cardInner => {
+            if (cardInner.style.transform === "rotateY(180deg)") {
+                cardInner.style.transform = "rotateY(0deg)";
+                cardInner.querySelector('.flip-card-front').style.visibility = "visible";
+                cardInner.querySelector('.flip-card-back').style.visibility = "hidden";
+                anyFlipped = true;
+            }
+        });
+        return anyFlipped;
+    }
+
+    // Reset all cards on scroll
+    let lastScrollPosition = window.scrollY;
+    const scrollThreshold = 500;
+    window.addEventListener('scroll', () => {
+        const currentScrollPosition = window.scrollY;
+        if (Math.abs(currentScrollPosition - lastScrollPosition) > scrollThreshold) {
+            if (resetFlippedCards()) {
+                lastScrollPosition = currentScrollPosition;
+            }
+        }
     });
 
     // Scroll to top functionality
