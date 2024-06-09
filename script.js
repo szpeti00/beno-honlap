@@ -90,39 +90,45 @@ document.addEventListener("DOMContentLoaded", () => {
             const cardInner = event.currentTarget.closest('.flip-card-inner');
             if (cardInner.style.transform === "rotateY(180deg)") {
                 cardInner.style.transform = "rotateY(0deg)";
-                cardInner.querySelector('.flip-card-front').style.visibility = "visible";
-                cardInner.querySelector('.flip-card-back').style.visibility = "hidden";
+                cardInner.querySelector('.flip-card-front').style.display = "block";
+                cardInner.querySelector('.flip-card-back').style.display = "none";
             } else {
                 cardInner.style.transform = "rotateY(180deg)";
-                cardInner.querySelector('.flip-card-front').style.visibility = "hidden";
-                cardInner.querySelector('.flip-card-back').style.visibility = "visible";
+                cardInner.querySelector('.flip-card-front').style.display = "none";
+                cardInner.querySelector('.flip-card-back').style.display = "block";
             }
         });
     });
 
-    // Function to reset all cards
+    // Function to reset flipped cards
     const resetFlippedCards = () => {
         let anyFlipped = false;
         document.querySelectorAll('.flip-card-inner').forEach(cardInner => {
             if (cardInner.style.transform === "rotateY(180deg)") {
                 cardInner.style.transform = "rotateY(0deg)";
-                cardInner.querySelector('.flip-card-front').style.visibility = "visible";
-                cardInner.querySelector('.flip-card-back').style.visibility = "hidden";
+                cardInner.querySelector('.flip-card-front').style.display = "block";
+                cardInner.querySelector('.flip-card-back').style.display = "none";
                 anyFlipped = true;
             }
         });
         return anyFlipped;
     }
 
-    // Reset all cards on scroll
+    // Reset flipped cards on scroll
     let lastScrollPosition = window.scrollY;
     const scrollThreshold = 500;
+    let scrollAnimationFrame;
     window.addEventListener('scroll', () => {
         const currentScrollPosition = window.scrollY;
         if (Math.abs(currentScrollPosition - lastScrollPosition) > scrollThreshold) {
-            if (resetFlippedCards()) {
-                lastScrollPosition = currentScrollPosition;
+            if (scrollAnimationFrame) {
+                cancelAnimationFrame(scrollAnimationFrame);
             }
+            scrollAnimationFrame = requestAnimationFrame(() => {
+                if (resetFlippedCards()) {
+                    lastScrollPosition = currentScrollPosition;
+                }
+            });
         }
     });
 
