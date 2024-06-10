@@ -333,21 +333,35 @@ nav .btn-close {
     border-radius: 4px;
 }
 
+.flip-card-inner.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.flip-card-inner.is-flipped .flip-card-front {
+    display: none;
+}
+
+.flip-card-inner.is-flipped .flip-card-back {
+    display: block;
+}
+
 .flip-card-front, .flip-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden; 
-    -webkit-backface-visibility: hidden; /* Safari */
+}
+
+.flip-card-front {
+    padding-bottom: 40px;
 }
 
 .flip-card-back {
     transform: rotateY(180deg);
+    display: none;
 }
 
 .card-body {
     height: 100%;
-    padding-bottom: 40px;
 }
 
 

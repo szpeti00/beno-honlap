@@ -84,53 +84,49 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Flip card
+    let lastScrollPosition = window.scrollY;
+    const scrollThreshold = 500;
+
+    // Flip card event
     document.querySelectorAll('.flip-btn').forEach(button => {
         button.addEventListener('click', (event) => {
             const cardInner = event.currentTarget.closest('.flip-card-inner');
-            if (cardInner.style.transform === "rotateY(180deg)") {
-                cardInner.style.transform = "rotateY(0deg)";
-                cardInner.querySelector('.flip-card-front').style.display = "block";
-                cardInner.querySelector('.flip-card-back').style.display = "none";
-            } else {
-                cardInner.style.transform = "rotateY(180deg)";
-                cardInner.querySelector('.flip-card-front').style.display = "none";
-                cardInner.querySelector('.flip-card-back').style.display = "block";
-            }
+            cardInner.classList.toggle('is-flipped');
         });
     });
 
-    // Function to reset flipped cards
-    const resetFlippedCards = () => {
-        let anyFlipped = false;
-        document.querySelectorAll('.flip-card-inner').forEach(cardInner => {
-            if (cardInner.style.transform === "rotateY(180deg)") {
-                cardInner.style.transform = "rotateY(0deg)";
-                cardInner.querySelector('.flip-card-front').style.display = "block";
-                cardInner.querySelector('.flip-card-back').style.display = "none";
-                anyFlipped = true;
-            }
-        });
-        return anyFlipped;
-    }
-
-    // Reset flipped cards on scroll
-    let lastScrollPosition = window.scrollY;
-    const scrollThreshold = 500;
-    let scrollAnimationFrame;
-    window.addEventListener('scroll', () => {
+    // Reset flip on significant scroll
+    window.addEventListener('scroll', debounce(() => {
         const currentScrollPosition = window.scrollY;
         if (Math.abs(currentScrollPosition - lastScrollPosition) > scrollThreshold) {
-            if (scrollAnimationFrame) {
-                cancelAnimationFrame(scrollAnimationFrame);
-            }
-            scrollAnimationFrame = requestAnimationFrame(() => {
-                if (resetFlippedCards()) {
-                    lastScrollPosition = currentScrollPosition;
-                }
+            document.querySelectorAll('.flip-card-inner.is-flipped').forEach(cardInner => {
+                cardInner.classList.remove('is-flipped');
             });
+            lastScrollPosition = currentScrollPosition;
         }
-    });
+    }, 300));
+
+    // Debounce function from here: https://www.freecodecamp.org/news/javascript-debounce-example/
+    function debounce(func, timeout) {
+        let timer;
+        return (...args) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => { func.apply(this, args); }, timeout);
+        };
+    }
+
+    // Apply debounce to scroll handler
+    const debouncedScrollHandler = debounce(() => {
+        const currentScrollPosition = window.scrollY;
+        if (Math.abs(currentScrollPosition - lastScrollPosition) > scrollThreshold) {
+            if (resetFlippedCards()) {
+                lastScrollPosition = currentScrollPosition;
+            }
+        }
+    }, 300);
+
+    // Add scroll event listener
+    window.addEventListener('scroll', debouncedScrollHandler);
 
     // Scroll to top functionality
     document.getElementById("scrollToTopBtn").addEventListener("click", () => {
