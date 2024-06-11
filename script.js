@@ -84,9 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    let lastScrollPosition = window.scrollY;
-    const scrollThreshold = 500;
-
     // Flip card event
     document.querySelectorAll('.flip-btn').forEach(button => {
         button.addEventListener('click', (event) => {
@@ -95,38 +92,20 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Reset flip on significant scroll
-    window.addEventListener('scroll', debounce(() => {
-        const currentScrollPosition = window.scrollY;
-        if (Math.abs(currentScrollPosition - lastScrollPosition) > scrollThreshold) {
-            document.querySelectorAll('.flip-card-inner.is-flipped').forEach(cardInner => {
+    // Intersection Observer to flip back cards when they are not visible
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                const cardInner = entry.target;
                 cardInner.classList.remove('is-flipped');
-            });
-            lastScrollPosition = currentScrollPosition;
-        }
-    }, 300));
-
-    // Debounce function from here: https://www.freecodecamp.org/news/javascript-debounce-example/
-    function debounce(func, timeout) {
-        let timer;
-        return (...args) => {
-            clearTimeout(timer);
-            timer = setTimeout(() => { func.apply(this, args); }, timeout);
-        };
-    }
-
-    // Apply debounce to scroll handler
-    const debouncedScrollHandler = debounce(() => {
-        const currentScrollPosition = window.scrollY;
-        if (Math.abs(currentScrollPosition - lastScrollPosition) > scrollThreshold) {
-            if (resetFlippedCards()) {
-                lastScrollPosition = currentScrollPosition;
             }
-        }
-    }, 300);
+        });
+    }, { threshold: 0.05 });  // threshold based on how much of the card should be visible before flipping back
 
-    // Add scroll event listener
-    window.addEventListener('scroll', debouncedScrollHandler);
+    // Add each flip-card-inner to the observer
+    document.querySelectorAll('.flip-card-inner').forEach(cardInner => {
+        observer.observe(cardInner);
+    });
 
     // Scroll to top functionality
     document.getElementById("scrollToTopBtn").addEventListener("click", () => {

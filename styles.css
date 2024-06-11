@@ -8,6 +8,7 @@
 }
 
 html {
+    font-size: 18px;
     scroll-padding-top: 3.85rem;
 }
 
@@ -150,9 +151,28 @@ nav .btn-close {
         transform: translateX(-50%) scaleX(1);
     }
 
+    .img-bigger {
+        max-width: 80%;
+    }
+
+    .img-smaller {
+        max-width: 70%;
+    }
+
     .card:hover {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
+}
+
+@media (min-width: 1200px) { 
+    .img-bigger {
+        max-width: 60%;
+    }
+
+    .img-smaller {
+        max-width: 50%;
+    }
+
 }
 
 /* Disable hover and active effects for smaller screens */
@@ -262,19 +282,27 @@ nav .btn-close {
 }
 
 .adjusted-vertical-position {
-    transform: translateY(-25%); 
+    transform: translateY(-35%); 
 }
 
-.home-link {
+/* .home-link {
     color: var(--primary-color);
     text-decoration: none;
-}
+} */
 
 .img-fluid {
-    max-width: 60%; /* Adjusts the maximum width as a percentage of the container */
-    height: auto; /* Keeps the aspect ratio intact */
-    display: block; /* Ensures the image is treated as a block element */
-    margin: 0 auto; /* Centers the image horizontally */
+    display: block; 
+    margin: 0 auto;
+    border: 1px solid var(--primary-light-color); 
+    border-radius: 2%; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;;
+    overflow: hidden;
+}
+
+.img-fluid:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transform: scale(1.05);
 }
 
 #contact .col-md-6 {
