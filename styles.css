@@ -136,6 +136,10 @@ nav .btn-close {
     display: none;
 }
 
+.small-screen-only {
+    display: none;
+}
+
 .footer-lang-link, .footer-lang-link .fi {
     margin-right: 8px;
 }
@@ -323,6 +327,14 @@ nav .btn-close {
 @media (max-width: 768px) {
     .card {
         height: 400px;
+    }
+
+    .small-screen-only {
+        display: block;
+    }
+
+    .bigger-screen-only {
+        display: none;
     }
 }
 
