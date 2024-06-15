@@ -309,6 +309,10 @@ nav .btn-close {
     transform: scale(1.05);
 }
 
+#about {
+    line-height: 1.6;
+}
+
 #contact .col-md-6 {
    padding-right: 30px;  /* padding between columns */
    padding-bottom: 30px;
