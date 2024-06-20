@@ -75,7 +75,7 @@ footer h4 {
 }
 
 #navbar-logo {
-    height: 40px; 
+    height: 50px; 
     width: auto; 
   }
 
@@ -251,6 +251,11 @@ nav .btn-close {
     .navbar-nav .nav-link.lang-link:nth-of-type(1) {
         margin-left: 40px;
     }
+
+    #navbar-logo {
+        height: 45px; 
+        width: auto; 
+      }
 
 
     #navbarDropdown {

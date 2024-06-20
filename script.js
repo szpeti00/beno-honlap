@@ -1,20 +1,4 @@
-// document.getElementById('contactForm').addEventListener('submit', function (event) {
-//     event.preventDefault();
-
-//     // Collect form data
-//     const name = document.getElementById('name').value;
-//     const email = document.getElementById('email').value;
-//     const message = document.getElementById('message').value;
-
-//     // Example: Log data (In a real scenario, submit it to a server or email service)
-//     console.log("Name: " + name);
-//     console.log("Email: " + email);
-//     console.log("Message: " + message);
-
-//     // Display a confirmation message or handle form submission
-//     alert('Thank you for reaching out! We will get back to you shortly.');
-// });
-
+// On DOMContentLoaded
 document.addEventListener("DOMContentLoaded", () => {
 
     // Collapse navbar on link click
@@ -83,6 +67,45 @@ document.addEventListener("DOMContentLoaded", () => {
             form.classList.add('was-validated');
         });
     });
+
+    // Contact form
+    document.getElementById('contactForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const form = this;
+        if (!this.checkValidity()) {
+            event.stopPropagation();
+        } else {
+            const formData = new FormData(this);
+            fetch('sendmail.php', {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => response.text())
+                .then(data => {
+                    // Clear the form if submission was successful
+                    form.reset();
+                    form.classList.remove('was-validated');
+                    // Select the button and insert the message right after it
+                    const button = document.querySelector('.sending-button');
+                    const messageContainer = document.createElement('div');
+                    messageContainer.innerHTML = `<div class="alert alert-success mt-2">${data}</div>`;
+                    if (button.nextSibling) {
+                        button.parentNode.removeChild(button.nextSibling); // Remove existing message if present
+                    }
+                    button.parentNode.insertBefore(messageContainer, button.nextSibling);
+                })
+                .catch((error) => {
+                    const button = document.querySelector('.sending-button');
+                    const messageContainer = document.createElement('div');
+                    messageContainer.innerHTML = `<div class="alert alert-danger mt-2">Error: ${error}</div>`;
+                    if (button.nextSibling) {
+                        button.parentNode.removeChild(button.nextSibling); // Remove existing message if present
+                    }
+                    button.parentNode.insertBefore(messageContainer, button.nextSibling);
+                });
+        }
+        this.classList.add('was-validated');
+    }, false);
 
     // Flip card event
     document.querySelectorAll('.flip-btn').forEach(button => {
