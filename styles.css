@@ -166,9 +166,9 @@ nav .btn-close {
         transform: translateX(-50%) scaleX(1);
     }
 
-    .img-bigger {
+    /* .img-bigger {
         max-width: 80%;
-    }
+    } */
 
     .img-smaller {
         max-width: 70%;
@@ -180,9 +180,9 @@ nav .btn-close {
 }
 
 @media (min-width: 1200px) { 
-    .img-bigger {
+    /* .img-bigger {
         max-width: 60%;
-    }
+    } */
 
     .img-smaller {
         max-width: 50%;
@@ -337,6 +337,10 @@ nav .btn-close {
 
 .card {
     height: 350px;
+}
+
+.grecaptcha-badge { 
+    visibility: hidden;
 }
 
 @media (max-width: 768px) {

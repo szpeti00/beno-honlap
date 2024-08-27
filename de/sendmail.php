@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($name) || empty($message) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         // Set a 400 (bad request) response code and exit.
         http_response_code(400);
-        echo "Oops! Valami hiba történt. Kérjük töltse ki az űrlapot és próbálja újra.";
+        echo "Hoppla! Ein Fehler ist aufgetreten. Bitte füllen Sie das Formular aus und versuchen Sie es erneut.";
         exit;
     }
 
@@ -39,14 +39,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mail($recipient, $subject, $email_content, $email_headers)) {
         http_response_code(200);
-        echo "Köszönjük a megtisztelő megkeresését, kollégáink 1-3 nap alatt felveszik Önnel/Önökkel a kapcsolatot.";
+        echo "Vielen Dank für Ihre ehrenvolle Anfrage. Unsere Mitarbeiter werden innerhalb von 1-3 Tagen Kontakt mit Ihnen aufnehmen.";
     } else {
         http_response_code(500);
-        echo "Oops! Valami hiba történt. Kérjük próbálja újra.";
+        echo "Hoppla! Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.";
     }
 } else {
     // Not a POST request, set a 403 (forbidden) response code.
     http_response_code(403);
-    echo "Oops! Valami hiba történt. Kérjük próbálja újra.";
+    echo "Hoppla! Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.";
 }
 ?>

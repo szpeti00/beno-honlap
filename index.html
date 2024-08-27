@@ -28,7 +28,7 @@
     <link rel="alternate" hreflang="de" href="http://www.drvb.hu/de/">
     <link rel="alternate" hreflang="no" href="http://www.drvb.hu/no/">
     <link rel="alternate" hreflang="hu" href="http://www.drvb.hu/">
-    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeQpP0pAAAAANkNBnwwIGqmci4tQLhEeuP3fz9A" async defer></script>
+    <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
 </head>
 <body>
     <header>
@@ -565,10 +565,14 @@
                             <label class="form-check-label" for="dataConsentCheckbox">Hozzájárulok, hogy az  adataimat a Varga D. Benedek Ügyvédi Iroda az <a href="#">adatkezelési tájékoztatóban</a> foglaltak szerint kezelje.</label>
                             <div class="invalid-feedback">Kérjük, fogadja el az adatkezelési nyilatkozatot a folytatáshoz.</div>
                         </div>
-                        <div class="mb-3 form-check">
-                            <div class="g-recaptcha" data-sitekey="6LeQpP0pAAAAANkNBnwwIGqmci4tQLhEeuP3fz9A"></div>
-                        </div>
-                        <button class="sending-button text-uppercase fw-bold" type="submit" aria-label="Üzenet küldése">Küldés</button>
+                        <!-- <div class="g-recaptcha"
+                            data-sitekey="6Lc6vf0pAAAAAGLQWtNctbMD59hBxGZKGyU7gbXI">
+                        </div> -->
+                        <button 
+                            class="sending-button text-uppercase fw-bold"
+                            type="submit" aria-label="Üzenet küldése">
+                            Küldés
+                        </button>
                     </form>
                 </div>
             </div>
@@ -657,14 +661,6 @@
     <!-- JavaScript & Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="script.js" defer></script>
-    <script>
-        function onClick(e) {
-          e.preventDefault();
-          grecaptcha.enterprise.ready(async () => {
-            const token = await grecaptcha.enterprise.execute('6LeQpP0pAAAAANkNBnwwIGqmci4tQLhEeuP3fz9A', {action: 'LOGIN'});
-          });
-        }
-    </script>
     <script type="application/ld+json">
         {
           "@context": "http://schema.org",
