@@ -28,7 +28,6 @@
     <link rel="alternate" hreflang="de" href="http://www.drvb.hu/de/">
     <link rel="alternate" hreflang="no" href="http://www.drvb.hu/no/">
     <link rel="alternate" hreflang="hu" href="http://www.drvb.hu/">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <header>
@@ -115,7 +114,6 @@
                     <p>
                         Benedek erwarb sein Diplom 2017 an der Fakultät für Rechts- und Staatswissenschaften der Pázmány-Péter-Katholischen-Universität in Budapest. Anschließend war er vier Jahre lang als Rechtsanwaltsanwärter bei der Anwaltskanzlei Pozderka und Partner tätig, wo er vor allem mit der Streitbeilegung in Wirtschafts-, Schadenersatz- und Versicherungssachen befasst war. Später war er als Jurist bei einer renommierten Baufirma in Ungarn tätig. 
                         Durch die Gründung seiner Anwaltskanzlei möchte er für den Erfolg seiner Mandanten unter Mitwirkung seiner assoziierten Finanzberater in den weiten Bereichen des Zivil- und Wirtschaftsrechts durch umfassende Rechtsberatung und Prozessvertretung Dienstleistungen anbieten, die sich in ein ständig wechselndes wirtschaftliches und rechtliches Umfeld fügen.
-                        Unsere Anwaltskanzlei ist Mitglied in der Anwaltssozietät Csurgó und Pozderka. Im Versicherungsrecht   verfügen die Mitglieder des mitwirkenden Anwaltsteams zusammen über eine Erfahrung von über 100 Jahren. Alle waren jahrelang als Rechtsanwälte, Manager oder Führungspersonen bei multinationalen Versicherungsgesellschaften tätig.
                     </p>
                 </div>
             </div>
@@ -490,7 +488,7 @@
                 </div>
                 <!-- Contact Form -->
                 <div class="col-md-6">
-                    <form id="contactForm" class="needs-validation p-3 border rounded shadow-sm bg-light" novalidate action="sendmail.php" method="post" enctype="application/x-www-form-urlencoded">
+                    <form id="contactForm" class="needs-validation p-3 border rounded shadow-sm bg-light" novalidate>
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Geben Sie Ihren Namen ein!" required>
@@ -580,7 +578,7 @@
 
             <!-- Copyright -->
             <div class="text-center mt-5 small">
-                <p>&copy; 2024 Rechtsanwaltskanzlei Dr. Benedek D. Varga</p>
+                <p>&copy; <span id="year"></span> Rechtsanwaltskanzlei Dr. Benedek D. Varga</p>
             </div>
         </div>
     </footer>

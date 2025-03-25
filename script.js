@@ -130,6 +130,9 @@ document.addEventListener("DOMContentLoaded", () => {
         observer.observe(cardInner);
     });
 
+    // Dynamically changing date in copyright section
+    document.getElementById("year").textContent = new Date().getFullYear();
+
     // Scroll to top functionality
     document.getElementById("scrollToTopBtn").addEventListener("click", () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });

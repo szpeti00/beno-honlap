@@ -33,10 +33,10 @@
 <body>
     <header>
         <!-- Navigation Bar -->
-        <nav class="navbar navbar-expand-lg fixed-top">
+        <nav class="navbar navbar-expand-xl fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img src="/img/vdb_web_logo_nav.jpg" alt="logo" id="navbar-logo">
+                    <img src="img/vdb_web_logo_nav.jpg" alt="logo" id="navbar-logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -57,6 +57,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link px-3 fs-5 text-uppercase" href="#contact">Elérhetőség</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-3 fs-5 text-uppercase" href="blog.html">Blog</a>
                         </li>
                          <!-- Language Links -->
                          <li class="nav-item mobile-only">
@@ -130,10 +133,6 @@
                         jog   széles   területén,   átfogó   jogi   tanácsadás   és   peres   képviselet   ellátásával 
                         nyújtson   olyan   szolgáltatást,   ami   beleilleszkedik   a   folyamatosan   változó 
                         gazdasági és jogi környezetbe.
-                        Az   ügyvédi   iroda   tagja   a   Csurgó   és   Pozderka   Ügyvédi   Társulásnak.   Az 
-                        együttműködő ügyvéd csapat tagjai együtt több mint 100 éves biztosítási jogi 
-                        tapasztalattal   rendelkeznek,   mindannyian   évekig   dolgoztak   ügyvédként, 
-                        menedzserként, felsővezetőként multinacionális biztosítótársaságoknál.
                     </p>
                 </div>
             </div>
@@ -602,6 +601,7 @@
                         <li class="mb-2"><a class="footer-link" href="#about">Rólunk</a></li>
                         <li class="mb-2"><a class="footer-link" href="#services">Szakterületek</a></li>
                         <li class="mb-2"><a class="footer-link" href="#contact">Elérhetőség</a></li>
+                        <li class="mb-2"><a class="footer-link" href="blog.html">Blog</a></li>
                         <li class="mb-2">
                         <a class="footer-lang-link mb-2" href="/en/"><span class="fi fi-gb"></span>English</a>
                         <a class="footer-lang-link mb-2" href="/de/"><span class="fi fi-de"></span>Deutsch</a>
@@ -636,7 +636,7 @@
 
             <!-- Copyright -->
             <div class="text-center mt-5 small">
-                <p>&copy; 2024 Varga D. Benedek ügyvédi iroda</p>
+                <p>&copy; <span id="year"></span> Varga D. Benedek ügyvédi iroda</p>
             </div>
         </div>
     </footer>
