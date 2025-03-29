@@ -17,5 +17,5 @@ jobs:
           server-dir: 'drvb.hu/'
           protocol: ftp
           port: 21
-          dangerous-clean-slate: true
+          timeout: 200000
           log-level: verbose
