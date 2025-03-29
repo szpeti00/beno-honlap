@@ -15,7 +15,7 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           server-dir: drvb.hu/
-          protocol: ftp
-          port: 21
+          protocol: ftps-legacy
+          port: 990
           timeout: 30000
           log-level: verbose
