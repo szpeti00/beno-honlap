@@ -1,21 +1,17 @@
-on: push
-name: Deploy website on push
+name: scp files
+on: [push]
 jobs:
-  web-deploy:
-    name: Deploy
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: Get latest code
-      uses: actions/checkout@v4
-
-    - name: Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      with:
-          server: ${{ secrets.FTP_HOST }}
+      - uses: actions/checkout@v4
+      - name: copy file via ssh password
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          server-dir: drvb.hu/
-          protocol: ftps-legacy
-          port: 990
-          timeout: 30000
-          log-level: verbose
+          port: 115
+          source: "./"                
+          target: "drvb.hu"
