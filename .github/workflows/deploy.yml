@@ -14,5 +14,6 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
+          server-dir: /drvb.hu/
           protocol: ftp
           port: 21
