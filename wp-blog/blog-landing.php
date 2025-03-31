@@ -15,7 +15,7 @@ get_header();
       );
       $categories = get_categories( $args );
       
-      // Define allowed category slugs (make sure they match your actual slugs)
+      // Define allowed category slugs (they match your actual slugs in wp)
       $allowed = array(
         'gazdasagi-ceg-jog',
         'biztositasi-jog',

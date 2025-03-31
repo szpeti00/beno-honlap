@@ -5,7 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Varga D. Benedek Ügyvédi Iroda - Átfogó jogi megoldások">
   <link rel="profile" href="https://gmpg.org/xfn/11">
-  
+  <title>
+    <?php 
+      // Print the main site title (set in Settings > General)
+      bloginfo('name'); 
+
+      // Add a dash and additional information based on the current page context
+      if ( is_front_page() ) {
+        // Front page: show site description
+        echo ' - ' . get_bloginfo('description'); 
+      } elseif ( is_category() ) {
+        // Category archive: show the category name
+        echo ' - ' . single_cat_title( '', false );
+      } elseif ( is_single() ) {
+        // Single post: show the post title
+        echo ' - ' . single_post_title( '', false );
+      } elseif ( is_page() ) {
+        // For static pages, show the page title
+        echo ' - ' . single_post_title( '', false );
+      } elseif ( is_archive() ) {
+        // For other archives, you might need a custom title
+        echo ' - Archive';
+      } elseif ( is_search() ) {
+        echo ' - Search results for "' . get_search_query() . '"';
+      } else {
+        // Fallback
+        wp_title( '-', true );
+      }
+    ?>
+  </title>
+
   <!-- Favicon links -->
   <link rel="icon" href="<?php echo get_template_directory_uri(); ?>/img/favicon/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_template_directory_uri(); ?>/img/favicon/favicon-32x32.png">
