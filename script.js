@@ -47,29 +47,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Change background image
     const backgrounds = document.querySelectorAll('.bg-image');
-    let currentBackgroundIndex = 0;
+    if (backgrounds.length > 0) {
+        let currentBackgroundIndex = 0;
 
-    const nextBackground = () => {
-        backgrounds[currentBackgroundIndex].style.opacity = '0'; // Fade out the current background
-        currentBackgroundIndex = (currentBackgroundIndex + 1) % backgrounds.length;
-        backgrounds[currentBackgroundIndex].style.opacity = '1'; // Fade in the next background
+        const nextBackground = () => {
+            backgrounds[currentBackgroundIndex].style.opacity = '0'; // Fade out the current background
+            currentBackgroundIndex = (currentBackgroundIndex + 1) % backgrounds.length;
+            backgrounds[currentBackgroundIndex].style.opacity = '1'; // Fade in the next background
+        }
+        setInterval(nextBackground, 5000); // Change background every 5 seconds
     }
-    setInterval(nextBackground, 5000); // Change background every 5 seconds
 
     // Form validation
     const forms = document.querySelectorAll('.needs-validation');
-    forms.forEach(form => {
-        form.addEventListener('submit', event => {
-            if (!form.checkValidity()) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-            form.classList.add('was-validated');
+    if (forms.length > 0) {
+        forms.forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            });
         });
-    });
+    }
 
     // Contact form
-    document.getElementById('contactForm').addEventListener('submit', function (event) {
+    const contactForm = document.getElementById('contactForm')
+    if (!contactForm) {
+        return;
+    }
+    contactForm.addEventListener('submit', function (event) {
         event.preventDefault();
         const form = this;
         if (!this.checkValidity()) {

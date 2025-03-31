@@ -33,7 +33,17 @@ footer .contact-link, .footer-link, .footer-lang-link {
     color: var(--secondary-color);
 }
 
-h2 {
+.wp-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.wp-link:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+h1, h2, .widget-title {
     padding: 20px 0;
     color: var(--primary-color);
     letter-spacing: 3px;
@@ -56,6 +66,18 @@ h4 {
 footer h4 {
     color: #fff;
 }
+
+ul {
+    list-style-type: square;
+}
+
+.uppercase-text {
+    text-transform: uppercase;
+}
+
+ol.bold-numbers li::marker {
+    font-weight: bold;
+  }
 
 .sending-button {
     background-color: var(--primary-color);
@@ -138,6 +160,13 @@ nav .btn-close {
     left: 40px;
     border: none;
 }
+
+.header-image {
+    height: 40vh;
+    width: 100%;
+    background: url('img/blog-header.jpg') center center no-repeat;
+    background-size: cover;
+  }  
 
 .lang-link {
     display: inline-block; /* Display language links in a line */
@@ -275,6 +304,12 @@ nav .btn-close {
     
     .footer-lang-link {
         display: block;
+    }
+
+    /* On smaller screens, reorder the sidebar */
+    .sidebar {
+        margin-top: 2rem;
+        width: 100%;
     }
 }
 
